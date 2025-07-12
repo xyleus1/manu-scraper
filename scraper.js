@@ -14,7 +14,7 @@ const path = require('path');
 puppeteer.use(StealthPlugin());
 
 const SEARCH_URL = 'https://www.alibaba.com/search/page?spm=a2700.factory_home.home_login_first_screen_search_bar_home.keydown__Enter&SearchScene=suppliers&SearchText=mens+clothes&verifiedManufactory=true';
-const EXPORTS_DIR = path.join(__dirname, 'exports');
+const EXPORTS_DIR = path.join(__dirname, 'exports', 'company_profilehtml');
 const MAX_RETRIES = 3;
 const MAX_PRODUCT_IMAGES = 3;
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
@@ -73,42 +73,55 @@ function isValidManufacturerUrl(url) {
 
 // --- USER COOKIES ---
 const cookies = [
-  { name: "JSESSIONID", value: "4B0FB42CDFD331E080D361DF711CA26F", domain: ".alibaba.com", path: "/" },
-  { name: "NWG", value: "NNW", domain: ".alibaba.com", path: "/" },
-  { name: "XSRF-TOKEN", value: "f6119855-48ee-438f-b62b-c6646d03409c", domain: ".alibaba.com", path: "/" },
-  { name: "__itrace_wid", value: "94354355-4263-46b6-9bd2-64a188b2c894", domain: ".alibaba.com", path: "/" },
-  { name: "__wpkreporterwid_", value: "9a916d00-7406-47a8-886c-d92959a7031d", domain: ".alibaba.com", path: "/" },
-  { name: "_m_h5_tk", value: "3b985df497a9bdd1e19f808095cf6d20_1752212268855", domain: ".alibaba.com", path: "/" },
-  { name: "_m_h5_tk_enc", value: "e8f16353e7a058ef2f0ec39ad0814ea3", domain: ".alibaba.com", path: "/" },
-  { name: "_tb_token_", value: "eb7de8761eb0e", domain: ".alibaba.com", path: "/" },
-  { name: "_ym_d", value: "1750526068", domain: ".alibaba.com", path: "/" },
+  { name: "__itrace_wid", value: "ae6c6ec3-690e-4179-3709-02fdf4788c0f", domain: ".alibaba.com", path: "/" },
+  { name: "__wpkreporterwid_", value: "8bdae96b-0131-49fc-0f45-e6ebfa61f10f", domain: ".alibaba.com", path: "/" },
+  { name: "_ga", value: "GA1.1.1868323931.1750799002", domain: ".alibaba.com", path: "/" },
+  { name: "_ga", value: "GA1.1.1733316257.1750798956", domain: ".alibaba.com", path: "/" },
+  { name: "_ga_3L5VDLSZZZ", value: "GS2.1.s1750798956$o1$g0$t1750798970$j46$l0$h0", domain: ".alibaba.com", path: "/" },
+  { name: "_ga_RVSKK1KF5N", value: "GS2.1.s1750827965$o2$g0$t1750827965$j60$l0$h0", domain: ".alibaba.com", path: "/" },
+  { name: "_gcl_au", value: "1.1.54086185.1750799002", domain: ".alibaba.com", path: "/" },
+  { name: "_lang", value: "en_US:ISO-8859-1", domain: ".alibaba.com", path: "/" },
+  { name: "_m_h5_tk", value: "94e22daa78cb6ad4eaee364b00376378_1752363173443", domain: ".alibaba.com", path: "/" },
+  { name: "_m_h5_tk_enc", value: "bd7a886cf2e46e27cdbce85ce8a5d2ca", domain: ".alibaba.com", path: "/" },
+  { name: "_samesite_flag_", value: "true", domain: ".alibaba.com", path: "/" },
+  { name: "_tb_token_", value: "3b3980865a835", domain: ".alibaba.com", path: "/" },
+  { name: "_ym_d", value: "1750799021", domain: ".alibaba.com", path: "/" },
   { name: "_ym_isad", value: "1", domain: ".alibaba.com", path: "/" },
-  { name: "_ym_uid", value: "1750526068796853350", domain: ".alibaba.com", path: "/" },
-  { name: "acs_usuc_t", value: "acs_rt=ded4521a01664c1584a6660d3f21d11d", domain: ".alibaba.com", path: "/" },
-  { name: "ali_apache_id", value: "33.1.217.71.1750526057752.593964.6", domain: ".alibaba.com", path: "/" },
+  { name: "_ym_uid", value: "1750799021256760382", domain: ".alibaba.com", path: "/" },
+  { name: "ac_inner_id", value: "ccb96a329c3a7c5865e8a89c8f49c2c5", domain: ".alibaba.com", path: "/" },
+  { name: "acs_usuc_t", value: "acs_rt=8bbdfcec94304be7b7bbd442299ead67", domain: ".alibaba.com", path: "/" },
+  { name: "ali_apache_id", value: "33.1.197.195.1750798858260.780190.1", domain: ".alibaba.com", path: "/" },
   { name: "ali_apache_track", value: "mt=1|mid=us29204879864eqiu", domain: ".alibaba.com", path: "/" },
   { name: "ali_apache_tracktmp", value: "W_signed=Y", domain: ".alibaba.com", path: "/" },
-  { name: "atpsida", value: "2c589bcb3726ee21cdc79155_1750526060_1", domain: ".alibaba.com", path: "/" },
+  { name: "atpsida", value: "512aa0428636c62ecc807c39_1752361287_5", domain: ".alibaba.com", path: "/" },
+  { name: "banThirdCookie", value: "flag", domain: ".alibaba.com", path: "/" },
   { name: "buyer_ship_to_info", value: "local_country=US", domain: ".alibaba.com", path: "/" },
-  { name: "cna", value: "atbdICsaaWsCAS/2gNXQAwm2", domain: ".alibaba.com", path: "/" },
-  { name: "cookie2", value: "ae3340ff2c9fa90453dff2fd43d16330", domain: ".alibaba.com", path: "/" },
-  { name: "havana_lgc2_4", value: "c5eabaf1bbef8bf65fddc930590199d5eba5a003e4acc39fafc05530f78a091f57210b713d7a038aa7d2e1b0624acce2b1b25d4036c6902eaac687b00e74751a", domain: ".alibaba.com", path: "/" },
-  { name: "icbu_s_tag", value: "9_11", domain: ".alibaba.com", path: "/" },
-  { name: "intl_common_forever", value: "UIFlZh6VvekPy61D0UeewlwD0leMAImRWzxZecEy4y1SKqqJWcBWRw==", domain: ".alibaba.com", path: "/" },
+  { name: "cna", value: "DgDiIBiEYwUCAWgjHlaNyxIa", domain: ".alibaba.com", path: "/" },
+  { name: "cookie2", value: "a237c8483069c8156ee6a26f9c1e4aba", domain: ".alibaba.com", path: "/" },
+  { name: "havana_lgc2_4", value: "c5eabaf1bbef8bf65fddc930590199d5eba5a003e4acc39fafc05530f78a091fe2b5edb707ae2605a8effc444090ed3e3a3d8e78c480034cbf71a0b3db66c1ba", domain: ".alibaba.com", path: "/" },
+  { name: "icbu_s_tag", value: "10_11", domain: ".alibaba.com", path: "/" },
+  { name: "intl_common_forever", value: "Y3SndyAediUBcuj3Pqg61MqExFISk/jxVuPmWN91XEoy3vk8jzcB4Q==", domain: ".alibaba.com", path: "/" },
   { name: "intl_locale", value: "en_US", domain: ".alibaba.com", path: "/" },
-  { name: "isg", value: "BNbWa5SfotEAkJZTmN2iOmysN4zYdxqxx2kvvUA7mrhUA3KduAXyweuwn4fvqxLJ", domain: ".alibaba.com", path: "/" },
-  { name: "recommend_login", value: "sns_google", domain: ".alibaba.com", path: "/" },
+  { name: "isg", value: "BFhY98-mhEknyqjkUFJm9AamKYbqQbzLrxfpJZJJpBNGLfgXO1GMW24fY30dJnSj", domain: ".alibaba.com", path: "/" },
+  { name: "JSESSIONID", value: "47851FAEEDD8A5AA67497BA245D68748", domain: ".alibaba.com", path: "/" },
+  { name: "NetWorkGrade", value: "SlowNetWork", domain: ".alibaba.com", path: "/" },
+  { name: "NWG", value: "SNW", domain: ".alibaba.com", path: "/" },
+  { name: "recommend_login", value: "email", domain: ".alibaba.com", path: "/" },
   { name: "sc_g_cfg_f", value: "sc_b_currency=USD&sc_b_locale=en_US&sc_b_site=US", domain: ".alibaba.com", path: "/" },
-  { name: "sca", value: "bdeef8a6", domain: ".alibaba.com", path: "/" },
-  { name: "sca", value: "d8421f7d", domain: ".alibaba.com", path: "/" },
-  { name: "sgcookie", value: "E100cP3U5RLQNsG2kKciG+WlnaH/4yowzMBRNiwTdInXqmUaW+0iVIzZHrRoJdmzWQS1T/YJzQpFOdYWGJxtoNURWANlj7BDyF5pF6s3l1nInsQ=", domain: ".alibaba.com", path: "/" },
-  { name: "tfstk", value: "g7NIYjDhEHxCrXcJPvbw1CRpz5k50N5qJUg8ozdeyXhKV8ZgcQrET9b7CorZewqzLYG7VuM8TXzUf0ZTf073zprayzZgUyrP-RT7olGzVzbny0E8V0yFQsz3-bcR0u1VgymRHVA7ObKzWX0zKg14csz3-FhR0i5VgUaRqhHK2uHKBh3xX3dKeuHtBqn994dKyhQsjc3ppDhJXd3xR3d82bQ_Wc0-w0E-pNatp-8jP9i3RwuDZKavDczKfQd869DIcypywQFsRvN8JcwQd5gIdmk8CuC39lz8TWDGcnhu7-Z7ekSMwDybWXnapGdmX-mKTWckypHa_zFr6PSpODwTxuH_KMOEvYNUFvyccKmre4MxwATJwPaEAu3sMHOjQ5z8afUNvBiQBkV-TSQ2EVD8QWD0TGdIM-4ET8EFjQnUhPh143dqctJ9FFMDNViV5N9kEax_B1ooqHVtpV0IQN_6v8DKSViV5N9kEv3iRc715Hel.", domain: ".alibaba.com", path: "/" },
-  { name: "ug_se_c", value: "free_1752211691615", domain: ".alibaba.com", path: "/" },
-  { name: "ug_se_c_tag", value: "ts=1752211691527", domain: ".alibaba.com", path: "/" },
-  { name: "xman_f", value: "5rLw/2dTx1ZAQLUSHceuqErgxZZRZDtXI0L6Gbch4bJ0/jvFkfbHITDdXSXmZqzypJXaoA204wzjAsNLH9K17TLEty8LDcRYkL08HDiCmzNuE/gnfbakhrIVO50klhq+B26zQOs6ApMxrjaEKiGkjfuisiCA0iEfDpkWifL7hDIdQ6WjVtk4t+1eDEeVLbiPYv/9GCbJZtFZxi3taJWGvEEtTWvlx1anSjwOlYvxTt7kQgLgpnOXVjalGhuT8xuDPTSaMEnCfE4fzXpGe0vB8A0+XwOR/DcPEJ8c16cV3aDwXvF95Tn+pRg/lz+IitPCGxG/DL9TXITMWFeCJtXCU+kkRbA1fMt9kTWaB2dPXQIS31UosaX8oDnLIUaoS04h", domain: ".alibaba.com", path: "/" },
+  { name: "sca", value: "979440b3", domain: ".alibaba.com", path: "/" },
+  { name: "seo_f", value: "trafc_i=seo", domain: ".alibaba.com", path: "/" },
+  { name: "sgcookie", value: "E100ova0H0GytF+VU3j7Tv8zdc2U+/yv2Vo1rgUh27JmDNZQyUKPAU618xwspTpcz8qixtmmDhRW42PvI3CZS17psLtUorDPEcH9mnV9llZQp8LAQdKQqRM1g3q07LeQdYFm", domain: ".alibaba.com", path: "/" },
+  { name: "t", value: "7d0061c16d9e928634b185e4cc825358", domain: ".alibaba.com", path: "/" },
+  { name: "tfstk", value: "g88mLSb0FnSfskkR2U_jcNkSC6nJcZ_1LdUOBNBZ4TW7H-Uv_NcMHdhj1mONIdvRFPCtcAaMECJnG1HXWStWpBzvkm_TSZ_17vHKJ2hXGN_NXCm5htOyN1lRgR6Bp0_17vHRGLXBkN9V6QBX_Qll611a0dSqz75AU1rV7dWP465L3NJwQ_7PO1Ca0tSwa_W5_NWwQNlkaT1G7OlYDmWX7U8rIiVf0otMzUfcm9RrPPzMryIcLIWu7yLdiV6egT4aS9vOlUOkMx4BwZTwK6pxzrvH_BtNqF2rKOTkaE-wN-cP-QxJvixo3PXJk1jF7gVa7QblFMLN82ylN3RvbE90sP5XkeIGdgca5GQyJM-en5GBaZ5wCMTtdr62_BTBvw00dsxytajP7urE03a1afLzflsVN_XdzbKvrmU1AnhoZkl10_1fpbcuflsVN_XKZbqE5i55G9C..", domain: ".alibaba.com", path: "/" },
+  { name: "ug_se_c", value: "organic_1752361318736", domain: ".alibaba.com", path: "/" },
+  { name: "ug_se_c_tag", value: "ts=1752361318736", domain: ".alibaba.com", path: "/" },
+  { name: "xlly_s", value: "1", domain: ".alibaba.com", path: "/" },
+  { name: "xman_f", value: "/htR1qnzVBPxJepOZp6cP3YkxRFmm9mNDBqvR+Ru5oVSycBZrXmyKKVvLbqfo/3eDjsA6knwam/x/Po9FEBTRsQNP0I9+s4tlCxU5WBkqYNBLQP7iTtDzF9o5iJaFwzs7CX1b3aibUT+3KmByHOE9W9tCJ42aHe4aeMzI2Q+P2gxOZhTSIbaX2iEXLEnA/yvV9MSGsnHVZFmUTB0XQGYX7BDU1s6ggM9OtEOj+D8q2emkcVcqz2KEWfRUCx9RI/wil23kZ0Cu5mT3DFPXV9smsP1Rft50Uih93YiukJg0Olqnqq3OkFOeDbjBtFVJW9GKUjXLKAKC83RSiYgVkYPhmwBjbazG1kPGK3Cv5z6dE2xurJ14WLPi1SM5hSQCmfj", domain: ".alibaba.com", path: "/" },
   { name: "xman_i", value: "aid=4500019450030", domain: ".alibaba.com", path: "/" },
-  { name: "xman_t", value: "eXfXPw3dMX2J8Ju68Gb5361mXENP7IsuB3mGPvq5Es4ECqJhrVfGRUQbN8DmBcx1", domain: ".alibaba.com", path: "/" },
-  { name: "xman_us_f", value: "x_locale=en_US&last_popup_time=1750526088037&x_l=0&x_user=US|Rah|Rah|ifm|1698414300&no_popup_today=n", domain: ".alibaba.com", path: "/" }
+  { name: "xman_t", value: "PfQmiZyWsZ1gw2AchAfjl5WcbmCBFETMi5wRQntjywy1Jh37gHpYPy2nMQizZD/BzCtfjnDFH9g91sI/9YO/gKeR7sJlys2iZM4l2S5ldHwIWMsTLJaqSclz9LnRxaA8Yo86EWjj6GRXWi7jN/24N2YSGkzBxHTM4q1TkIMDBLbq6Mr/LiBrwAAgVCli0Ll3/8j9ujDa978uCwGcbjxI5u/fWqi/Lh2Pfq6Ajd0EGubHTjtLJhbENdKRWWSkb+e5uQYqyZ92pwNCGYaOvVLl3ydP+68h13OUQ2xUDXuVc9eRM8jsFHPRyMiamNA9Te82gDqnHuE7jrJ4ahc/CUw5qmXQpF+lWEe+XC2sCFaboeWsssdCpsI6+irRXUXPUshMUdGphvW7wSm32k1gLtoGmWlBWQVT1YOOtNHlQutPkLR4JJiEh57upjKJp6XqVNzkKFoG1F1fbUGzwpkf5lHgjIOAe9DbfD5HwXTfQAOJw644a9VL4JXbDjOj1qNEhk5tSw1ytdu1sZDhHJRUePscvUG3tpC4e/EqGHcx+5NktTL5HmTWqXneHUvHdcR2FXgZAvRVH4R+U2/oUsNcaLUVZIeq4zjaORZDaikRDaSVlGyBShPbc0LXn2MOx1mRbOoA66IAYtl6NQMzQTE47n079VfSHgcsa5bVRsUJTsC7ItFO7G9Xfpkn+19xz60rXjLHtuAUT7qrNifwTkpMQID1GA==", domain: ".alibaba.com", path: "/" },
+  { name: "xman_us_f", value: "x_locale=en_US&last_popup_time=1750804075937&x_l=0&x_user=US|Rah|Rah|ifm|1698414300&no_popup_today=n", domain: ".alibaba.com", path: "/" },
+  { name: "xman_us_t", value: "l_source=alibaba&sign=y&need_popup=y&x_user=jffVeO8YhpqsZ/57j+OwqAYXVKL9xegD3PMZ2xDUuD4=&ctoken=15ou6y5rl828k&x_lid=us29204879864eqiu", domain: ".alibaba.com", path: "/" },
+  { name: "XSRF-TOKEN", value: "2016d6e5-4958-4315-b22c-2a64a20ed3ab", domain: ".alibaba.com", path: "/" }
 ];
 // --- END USER COOKIES ---
 
@@ -171,7 +184,9 @@ async function scrape() {
 }
 
 async function processManufacturer(browser, manuUrl) {
-  const manuId = sanitize(manuUrl.split('/').filter(Boolean).pop() || 'unknown');
+  // Extract manufacturerId from subdomain (e.g., fzyqclothing from https://fzyqclothing.en.alibaba.com/company_profile.html)
+  const manuIdMatch = manuUrl.match(/^https:\/\/(.*?)\.en\.alibaba\.com/);
+  const manuId = manuIdMatch ? sanitize(manuIdMatch[1]) : 'unknown';
   const manuDir = path.join(EXPORTS_DIR, manuId);
   mkdirp.sync(manuDir);
   const page = await browser.newPage();
@@ -217,7 +232,7 @@ async function processManufacturer(browser, manuUrl) {
   });
   const contactImgs = imgInfos.filter(img =>
     /contact|email|phone|whatsapp/i.test(img.src + ' ' + img.alt)
-  );
+  ).slice(0, 2); // Only up to 2 contact images
   let ocrCount = 0;
   for (const img of contactImgs) {
     try {
@@ -232,7 +247,7 @@ async function processManufacturer(browser, manuUrl) {
   }
   // Download up to 3 product images
   const productImgs = imgInfos.filter(img =>
-    /product|clothing|garment|factory/i.test(img.src + ' ' + img.alt)
+    !(/contact|email|phone|whatsapp/i.test(img.src + ' ' + img.alt)) // Exclude contact images
   ).slice(0, MAX_PRODUCT_IMAGES);
   let imgNum = 0;
   for (const img of productImgs) {
